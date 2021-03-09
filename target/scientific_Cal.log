@@ -1,0 +1,5 @@
+09/Mar/2021:16:28:12 576 [Calculator.java] [INFO] com.iiitb.Calculator.Calculator [Factorial]5
+09/Mar/2021:16:28:20 571 [Calculator.java] [INFO] com.iiitb.Calculator.Calculator [Power]4.0 2.0
+09/Mar/2021:16:28:26 011 [Calculator.java] [INFO] com.iiitb.Calculator.Calculator [Log]45.0
+09/Mar/2021:16:28:29 471 [Calculator.java] [INFO] com.iiitb.Calculator.Calculator [Factorial]1
+09/Mar/2021:16:28:35 177 [Calculator.java] [INFO] com.iiitb.Calculator.Calculator [SquareRoot]89.0
