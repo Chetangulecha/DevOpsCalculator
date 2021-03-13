@@ -1,0 +1,66 @@
+pipeline {
+    environment {
+        registry = "chetan1998/calculator"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
+ 
+    agent any
+
+    stages {
+        stage('Git') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Chetangulecha/DevOpsCalculator.git'
+            }
+        }
+       
+        stage('Test') {
+            steps {
+                sh "mvn test"
+            }
+        }
+        
+        stage('Package application') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+       
+        stage('Building docker image') {
+            steps{
+                script {
+                    dockerImage = docker.build registry + ":latest"
+                }
+            }
+        }
+       
+        stage('Push docker image to dockerhub') {
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
+            }
+        }
+        
+        stage('Deployment using rundeck on container'){
+            agent any
+            steps {
+                script {
+                    step([$class: "RundeckNotifier",
+                    rundeckInstance : "rundeck",
+                    options: """
+                        BUILD_VERSION=":latest"
+                        """,
+                        jobId : "4e740b2a-8746-488d-8f12-d6cceff7213f"    
+                        ]
+                        )
+                }
+            }
+            
+        }
+        
+
+    }
+}
