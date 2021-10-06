@@ -1,0 +1,6 @@
+Scientific Calculator using DevOps Tools
+• Automated the development, testing and deployment of a java based scientific calculator program
+by creating a CI/CD pipeline on it
+• Development: IntelliJ IDEA, Git, Github, Testing: JUnit, Logging: Log4j, Dependency management
+and packaging: Maven, Integration (pipeline): Jenkins, Delivery: Docker, Docker hub,
+Jenkins, Deployment: Rundeck, Monitoring: ELK Stack
